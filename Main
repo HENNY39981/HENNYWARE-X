@@ -1,0 +1,57 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Basic Script (Universal)", "Sentinel")
+local Tab = Window:NewTab("Character")
+local Section = Tab:NewSection("Character")
+
+Section:NewSlider("Walkspeed", "Change Your Walkspeed", 200, 16, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewSlider("Jump Power", "Change Your Jumppower", 200, 0, function(s) -- 200 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+Section:NewButton("Click TP", "Press to enable click tp", function()
+    if _G.WRDClickTeleport == nil then
+        _G.WRDClickTeleport = true
+        
+        local player = game:GetService("Players").LocalPlayer
+        local UserInputService = game:GetService("UserInputService")
+         
+        local mouse = player:GetMouse()
+    
+        
+        repeat wait() until mouse
+        
+        UserInputService.InputBegan:Connect(function(input, gameProcessed)
+            if input.UserInputType == Enum.UserInputType.MouseButton1 then
+                --Only click teleport if the toggle is enabled
+                if _G.WRDClickTeleport and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+                    player.Character:MoveTo(Vector3.new(mouse.Hit.x, mouse.Hit.y, mouse.Hit.z)) 
+                end
+            end
+        end)
+    
+    else
+        _G.WRDClickTeleport = not _G.WRDClickTeleport
+   if _G.WRDClickTeleport then
+    game.StarterGui:SetCore("SendNotification", {Title="HENNYWARE X"; Text="Click TP enabled"; Duration=5;})
+   else
+    game.StarterGui:SetCore("SendNotification", {Title="HENNYWARE X"; Text="Click TP Disabled"; Duration=5;})
+   end
+        end
+    print("Clicked")
+end)
+
+local Tab = Window:NewTab("Settings")
+local Section = Tab:NewSection("Settings")
+
+Section:NewKeybind("Close Gui", "Open and close GUI", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
+
+local Tab = Window:NewTab("Credits")
+local Section = Tab:NewSection("Credits")
+Section:NewLabel("Owner - HENNY")
+Section:NewLabel("Scripter - HENNY")
+Section:NewLabel("Cool Guy - HENNY")
