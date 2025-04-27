@@ -1,0 +1,13 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Key System", "Sentinel")
+local Tab = Window:NewTab("Key System")
+
+local Section = Tab:NewSection("Key System")
+
+Section:NewTextBox("Enter Key", "Enter Key here", function(txt)
+    if txt == "Start" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/HENNY39981/Universal/refs/heads/main/Universal%20Script?token=GHSAT0AAAAAADC5564AGGSIKE3K7E3KAQBO2AOYHEQ"))()
+    else
+        game.StarterGui:SetCore("SendNotification", {Title="HENNYWARE X"; Text="Incorrect Key"; Duration=5;})
+    end
+end)
