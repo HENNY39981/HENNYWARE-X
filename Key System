@@ -4,10 +4,12 @@ local Tab = Window:NewTab("Key System")
 
 local Section = Tab:NewSection("Key System")
 
-Section:NewTextBox("Enter Key", "Enter Key here", function(txt)
-    if txt == "Start" then
-        loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/HENNY39981/HENNYWARE-X/refs/heads/main/Main"))()"))()
+Section:NewTextBox("Enter Key", "Enter Key Here", function(txt)
+    if txt == "Key" then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/HENNY39981/HENNYWARE-X/refs/heads/main/Main"))()
     else
         game.StarterGui:SetCore("SendNotification", {Title="HENNYWARE X"; Text="Incorrect Key"; Duration=5;})
     end
 end)
+
+Library:ToggleUI()
